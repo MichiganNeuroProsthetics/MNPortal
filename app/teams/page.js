@@ -1,7 +1,6 @@
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import Navbar from "@/components/navbar";
 import Card from "@/components/card";
-import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -23,8 +22,7 @@ export default function Home() {
           <Card />
           <Card />
         </div>
-
-        <Footer />
+        <footer className={styles.footer}></footer>
     </main>
   );
 }
