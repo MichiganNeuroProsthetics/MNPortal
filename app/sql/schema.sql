@@ -21,18 +21,19 @@ CREATE TABLE members
 
 CREATE TABLE projects
 (
-    name VARCHAR(40) NOT NULL
-    id INTEGER AUTOINCREMENT
+    name VARCHAR(40) NOT NULL,
+    id INTEGER AUTOINCREMENT,
+    team VARCHAR(20) NOT NULL,
+
+    FOREIGN KEY (team) REFERENCES teams(name)
 )
 
-
-CREATE TABLE posts
+CREATE TABLE documentation
 (
-    postid INTEGER PRIMARY KEY AUTOINCREMENT,
-    filename VARCHAR(64) NOT NULL, 
-    owner VARCHAR(20) NOT NULL, 
-    created DATETIME default CURRENT_TIMESTAMP,
+    id INTEGER AUTOINCREMENT,
+    filename VARCHAR(64) NOT NULL,
+    type VARCHAR(30) NOT NULL,
+    team VARCHAR(20) as "mnp",
 
-	FOREIGN KEY (owner) REFERENCES users(username) ON DELETE CASCADE
-);
-
+    FOREIGN KEY (team) REFERENCES projects(team)
+)

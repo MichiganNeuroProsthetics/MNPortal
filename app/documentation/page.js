@@ -2,6 +2,10 @@ import styles from "../page.module.css";
 import Navbar from "@/components/navbar";
 import Card from "@/components/card";
 
+// have documentation as a drop down 
+// can only click to different pages for documentation for relevant teams
+// how should the documentation be displayed?? 
+// can organize by subteam within that page 
 export default function Home() {
   return (
     <main className={styles.main}>

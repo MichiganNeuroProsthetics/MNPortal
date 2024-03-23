@@ -1,5 +1,12 @@
 import Link from 'next/link';
 import styles from '../app/navbar.module.css';
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem
+} from "@nextui-org/react";
 
 const Navbar = () => {
   return (
@@ -14,6 +21,21 @@ const Navbar = () => {
             </Link>
           </li>
           <li className={styles.navItem}>
+          <Dropdown>
+            <DropdownTrigger>
+              <Button variant="bordered">Open Menu</Button>
+            </DropdownTrigger>
+
+            <DropdownMenu aria-label="Link Actions">
+              <DropdownItem key="home" href="/home">
+                Home
+              </DropdownItem>
+              
+              <DropdownItem key="about" href="/about">
+                About
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
             <Link href="/documentation" className={styles.navLink}>
               Documentation
             </Link>
