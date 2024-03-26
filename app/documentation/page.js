@@ -1,10 +1,12 @@
-import styles from "../page.module.css";
+import styles from "../style/page.module.css";
 import Navbar from "@/components/navbar";
 import Card from "@/components/card";
 
+// have documentation as a drop down 
+// can only click to different pages for documentation for relevant teams
+// how should the documentation be displayed?? 
+// can organize by subteam within that page 
 export default function Home() {
-  
-  // iterate through teams data returned in order to create "cards" for each team 
   return (
     <main className={styles.main}>
       <Navbar />
@@ -14,7 +16,6 @@ export default function Home() {
           <h2>Team Projects</h2>
         </div>
       </div>
-
       <div className={styles.cardGrid}>
           <Card />
           <Card />
@@ -25,6 +26,7 @@ export default function Home() {
           <Card />
           <Card />
         </div>
+
         <footer className={styles.footer}></footer>
     </main>
   );

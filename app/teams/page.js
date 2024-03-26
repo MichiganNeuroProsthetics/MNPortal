@@ -1,9 +1,10 @@
-import styles from "./page.module.css";
+import styles from "../style/page.module.css";
 import Navbar from "@/components/navbar";
 import Card from "@/components/card";
-import Footer from "@/components/footer";
 
 export default function Home() {
+  
+  // iterate through teams data returned in order to create "cards" for each team 
   return (
     <main className={styles.main}>
       <Navbar />
@@ -13,6 +14,7 @@ export default function Home() {
           <h2>Team Projects</h2>
         </div>
       </div>
+
       <div className={styles.cardGrid}>
           <Card />
           <Card />
@@ -23,8 +25,7 @@ export default function Home() {
           <Card />
           <Card />
         </div>
-
-        <Footer />
+        <footer className={styles.footer}></footer>
     </main>
   );
 }

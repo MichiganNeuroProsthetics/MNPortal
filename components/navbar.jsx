@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import styles from '../app/navbar.module.css';
+import styles from '../app/style/navbar.module.css';
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownSection,
-  DropdownItem
+  DropdownItem,
+  Button
 } from "@nextui-org/react";
 
 const Navbar = () => {
