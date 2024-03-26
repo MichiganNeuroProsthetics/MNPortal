@@ -4,34 +4,7 @@ import hashlib
 import sqlite3
 import pathlib
 import flask
-
-
-
-def api_logname(connection):
-    """DOCTRING LEAVE ME ALONE."""
-    if flask.request.authorization is not None:
-        username = flask.request.authorization['username']
-        password = flask.request.authorization['password']
-        logname = insta485.api.accounts.api_login(connection, username,
-                                                  password)
-    else:
-        logname = flask.session.get('username')
-
-    return logname
-
-
-def hash_password(password):
-    """Hash password function."""
-    algorithm = 'sha512'
-    salt = uuid.uuid4().hex
-    hash_obj = hashlib.new(algorithm)
-    password_salted = salt + password
-    hash_obj.update(password_salted.encode('utf-8'))
-    password_hash = hash_obj.hexdigest()
-    password_db_string = "$".join([algorithm, salt, password_hash])
-
-    return password_db_string
-
+import mnportal
 
 def gen_filename(filename):
     """Generate filename for files which will get newly uploaded."""
@@ -44,13 +17,13 @@ def gen_filename(filename):
 
 def upload_file(filename, file_obj):
     """Upload a file to the database."""
-    path = insta485.app.config["UPLOAD_FOLDER"]/filename
+    path = mnportal.app.config["UPLOAD_FOLDER"]/filename
     file_obj.save(path)
 
 
 def delete_file(filename):
     """Delete a file from the database."""
-    path = pathlib.Path(insta485.app.config["UPLOAD_FOLDER"]/filename)
+    path = pathlib.Path(mnportal.app.config["UPLOAD_FOLDER"]/filename)
     path.unlink()
 
 
@@ -70,7 +43,7 @@ def get_db():
     https://flask.palletsprojects.com/en/1.0.x/appcontext/#storing-data
     """
     if 'sqlite_db' not in flask.g:
-        db_filename = insta485.app.config['DATABASE_FILENAME']
+        db_filename = mnportal.app.config['DATABASE_FILENAME']
         flask.g.sqlite_db = sqlite3.connect(str(db_filename))
         flask.g.sqlite_db.row_factory = dict_factory
 
@@ -81,7 +54,7 @@ def get_db():
     return flask.g.sqlite_db
 
 
-@insta485.app.teardown_appcontext
+@mnportal.app.teardown_appcontext
 def close_db(error):
     """Close the database at the end of a request.
 
